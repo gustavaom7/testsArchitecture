@@ -1,0 +1,28 @@
+{
+  "name": "test-architeture",
+  "version": "0.0.1",
+  "description": "first test architeture version",
+  "main": "index.js",
+  "scripts": {
+    "test:run": "dotenv -- cypress-tags run -e TAGS=@testRun --browser %BROWSER% --headed --no-exit",
+    "postcypress:run": "node cypress/report/report.js"
+  },
+  "cypress-cucumber-preprocessor": {
+    "step_definitions": "cypress/support/steps",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/test-results/cucumber-json",
+      "filePrefix": "",
+      "fileSuffix": ".json"
+    }
+  },
+  "dependencies": {
+    "cypress": "^9.1.1",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "multiple-cucumber-html-reporter": "^1.18.3"
+  },
+  "devDependencies": {
+    "cypress-dotenv": "^2.0.0",
+    "dotenv": "^10.0.0"
+  }
+}
