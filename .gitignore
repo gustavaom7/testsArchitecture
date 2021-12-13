@@ -1,3 +1,15 @@
+#package-lock.json
+package-lock.json
+
+
+#Environment
+.env*
+
+#Report
+*.html
+*.html
+*.xml
+
 # Compiled class file
 *.class
 
@@ -21,3 +33,6 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#Dependency directory
+node_modules

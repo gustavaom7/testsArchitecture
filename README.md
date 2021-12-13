@@ -21,3 +21,16 @@ Repository dedicated to exampificate an automated test architecture.
 7º Após isso será criada uma pasta 'Cypress' no diretório do projeto
 
 8º Iniciar configuração da pasta 'support'
+
+9º Instalação do cypress-cucumber-preprocessor
+    npm install cypress-cucumber-preprocessor
+
+10º Configuração Cypress/Cucumber
+    <https://medium.com/cwi-software/testes-automatizados-com-cypress-e-cucumber-d78b211da766>
+
+11º Instalação de dependências para geração do report
+    https://vitormarinheiroautomation.medium.com/aprenda-a-gerar-reports-do-cypress-com-cucumber-4b31b21a46ab
+    npm install multiple-cucumber-html-reporter
+
+12º Configuração do dotenv
+    https://www.npmjs.com/package/cypress-dotenv
