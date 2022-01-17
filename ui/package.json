@@ -4,7 +4,9 @@
   "description": "first test architeture version",
   "main": "index.js",
   "scripts": {
-    "test:run": "dotenv -- cypress-tags run -e TAGS=@testRun --browser %BROWSER% --headed --no-exit",
+    "test:run": "cypress-tags run -e TAGS=@testRun --browser chrome --headed --no-exit",
+    "report": "node cypress/plugins/index.js",
+    "pretest": "rm -rf cypress/test-results/cucumber-json cypress/test-results/html cypress/videos",
     "postcypress:run": "node cypress/report/report.js"
   },
   "cypress-cucumber-preprocessor": {
@@ -13,12 +15,14 @@
       "generate": true,
       "outputFolder": "cypress/test-results/cucumber-json",
       "filePrefix": "",
-      "fileSuffix": ".json"
+      "fileSuffix": ".cucumber"
     }
   },
   "dependencies": {
-    "cypress": "^9.1.1",
+    "cucumber-html-reporter": "^5.5.0",
+    "cypress": "^8.0.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-tags": "^0.3.0",
     "multiple-cucumber-html-reporter": "^1.18.3"
   },
   "devDependencies": {

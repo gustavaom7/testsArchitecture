@@ -16,21 +16,40 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+
 
 const cucumber = require('cypress-cucumber-preprocessor').default
+var reporter = require('cucumber-html-reporter');
+const dotenvPlugin = require('cypress-dotenv');
+
 module.exports = (on, config) => {
   on('file:preprocessor', cucumber())
-}
 
-const dotenvPlugin = require('cypress-dotenv');
-module.exports = (on, config) => {
   config = dotenvPlugin(config)
   return config
 }
 
+var options = {
+  theme: 'bootstrap', //more options: bootstrap, hierarchy, foundation and simple
+  jsonFile: 'cypress/test-results/cucumber-json',
+  output: 'cypress/test-results/html/report.html',
+  reportSuiteAsScenarios: true,
+  scenarioTimestamp: true,
+  launchReport: true,
+  metadata: {
+      "App Version":"0.3.2",
+      "Test Environment": "STAGING",
+      "Browser": "Chrome  54.0.2840.98",
+      "Platform": "Windows 1",
+      "Parallel": "Scenarios",
+      "Executed": "Remote"
+  }
+  //to generate consodilated report from multi-cucumber JSON files, please use `jsonDir` option instead of `jsonFile`.
+  //More info is available in `options` section below.
+};
+
+reporter.generate(options);
+
+
 //Environment
-config.env.base_url = process.env.BASE_URL;
+//config.env.base_url = process.env.BASE_URL;

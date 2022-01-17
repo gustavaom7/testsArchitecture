@@ -2,5 +2,6 @@
     "viewPortWidth": 1024,
     "viewPortHeight": 768,
     "defaultCommandTimeout": 60000,
-    "pageLoadTimeout": 60000
+    "pageLoadTimeout": 60000,
+    "baseUrl": "https://www.saucedemo.com/"
 }
