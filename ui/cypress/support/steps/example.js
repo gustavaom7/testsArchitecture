@@ -4,6 +4,6 @@ import test from '../pageobjects/example'
 
 const TestFunctions = new test
 
-And("test phrase", () => {
-    TestFunctions.testFunction();
+And("access SwagLabs website", () => {
+    TestFunctions.visitBaseUrl();
 })
