@@ -42,6 +42,38 @@ describe('Shopping Cart Tests', () => {
         cartPage.checkItemNotVisible('Sauce Labs Backpack')
     })
 
-    // next scenario: checkout 
+    it('checkout not filling any mandatory field', () => {
+        // Add backpack to cart
+        addToCart.addBackpackToCart()
+        // Open cart
+        cartPage.openCart()
+        // Check if item is in the cart
+        cartPage.checkItemInCart('Sauce Labs Backpack')
+        // Click checkout button
+        cartPage.checkoutButtonClick()
+        // Click Continue button at checkout screen
+        cartPage.continueButtonCheckout()
+        // Check if error is visible
+        cy.checkVisible('[data-test="error"]')
+    })
 
+    it('checkout successfully', () => {
+        // Add backpack to cart
+        addToCart.addBackpackToCart()
+        // Open cart
+        cartPage.openCart()
+        // Check if item is in the cart
+        cartPage.checkItemInCart('Sauce Labs Backpack')
+        // Click checkout button
+        cartPage.checkoutButtonClick()
+        // Fill form correctly
+        cartPage.fillCheckoutFormCorrectly()
+        // Click Continue button at checkout screen
+        cartPage.continueButtonCheckout()
+        // Finish the operation
+        cartPage.clickFinishCheckout()
+        // Check confirmation message
+        cy.checkVisible('[data-test="complete-header"]')
+
+    })
 })
