@@ -1,6 +1,10 @@
 #package-lock.json
 package-lock.json
 
+#Cypress folders
+cypress/reports
+cypress/screenshots
+cypress/videos
 
 #Environment
 .env*

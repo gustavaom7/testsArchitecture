@@ -6,8 +6,10 @@
   "scripts": {
     "test:run": "cypress-tags run -e TAGS=@testRun --browser chrome --headed --no-exit",
     "report": "node cypress/plugins/index.js",
-    "pretest": "rm -rf cypress/test-results/cucumber-json cypress/test-results/html cypress/videos",
-    "postcypress:run": "node cypress/report/report.js"
+    "postcypress:run": "node cypress/report/report.js",
+    "clean:reports": "rm -rf cypress/reports",
+  "test": "cypress run",
+  "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/steps",
@@ -27,6 +29,9 @@
   "devDependencies": {
     "cypress": "^15.9.0",
     "cypress-dotenv": "^2.0.0",
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.0",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }
