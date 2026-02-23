@@ -17,8 +17,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           working-directory: ui
-          browser: chrome
-          command: npm run test:chrome 
+          command: npm run test:chrome && npm run posttest
 
       - name: Upload Reports 📊
         if: always()

@@ -4,13 +4,13 @@
   "description": "first test architeture version",
   "main": "index.js",
   "scripts": {
-    "test:run": "cypress-tags run -e TAGS=@testRun --browser chrome --headed --no-exit",
-    "report": "node cypress/plugins/index.js",
-    "postcypress:run": "node cypress/report/report.js",
-    "clean:reports": "rm -rf cypress/reports",
+    "test:tag": "cypress-tags run -e TAGS=@testRun --browser chrome --headed --no-exit",
     "test:chrome": "cypress run --browser chrome",
     "test": "cypress run",
-    "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline"
+    "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline",
+    "report": "node cypress/plugins/index.js",
+    "postcypress:run": "node cypress/report/report.js",
+    "clean:reports": "rm -rf cypress/reports"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/steps",
