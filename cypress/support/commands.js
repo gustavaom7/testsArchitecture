@@ -23,3 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+//Check if an element is visile
+Cypress.Commands.add('checkVisible', (selector) => {
+    cy.get(selector).should('be.visible');
+  });
+
+//Check if an element is not visile
+Cypress.Commands.add('checkNotVisible', (selector) => {
+    cy.get(selector).should('not.be.visible');
+});
