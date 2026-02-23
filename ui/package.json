@@ -8,8 +8,9 @@
     "report": "node cypress/plugins/index.js",
     "postcypress:run": "node cypress/report/report.js",
     "clean:reports": "rm -rf cypress/reports",
-  "test": "cypress run",
-  "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline"
+    "test:chrome": "cypress run --browser chrome",
+    "test": "cypress run",
+    "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/steps",

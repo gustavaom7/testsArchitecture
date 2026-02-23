@@ -1,0 +1,28 @@
+name: Cypress Regression Tests 🚀
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Cypress run 🌲
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          # Isso garante que ele use o script de teste que você já tem no package.json
+          command: npm run test:chrome 
+
+      - name: Upload Reports 📊
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: cypress/reports/html
