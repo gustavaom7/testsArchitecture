@@ -16,8 +16,8 @@ jobs:
       - name: Cypress run 🌲
         uses: cypress-io/github-action@v6
         with:
+          working-directory: ui
           browser: chrome
-          # Isso garante que ele use o script de teste que você já tem no package.json
           command: npm run test:chrome 
 
       - name: Upload Reports 📊
