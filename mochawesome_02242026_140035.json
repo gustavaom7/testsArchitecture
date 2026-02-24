@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-02-24T14:00:33.696Z",
+    "end": "2026-02-24T14:00:35.472Z",
+    "duration": 1776,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "604a7ab0-68b6-4243-a42b-aa67d60fe979",
+      "title": "",
+      "fullFile": "cypress/e2e/gui/login.cy.js",
+      "file": "cypress/e2e/gui/login.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "1621b1df-53a8-4bd7-9fdd-68fe264b255a",
+          "title": "SauceDemo Login Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should login successfully with valid credentials",
+              "fullTitle": "SauceDemo Login Tests should login successfully with valid credentials",
+              "timedOut": null,
+              "duration": 944,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.submitLogin(credentials.standardUser, credentials.password);\n// Validation: Verify URL redirection\ncy.url().should('include', '/inventory.html');",
+              "err": {},
+              "uuid": "5f9c9a39-f057-4da3-9e69-26c01774e86f",
+              "parentUUID": "1621b1df-53a8-4bd7-9fdd-68fe264b255a",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should display error message for locked out user",
+              "fullTitle": "SauceDemo Login Tests should display error message for locked out user",
+              "timedOut": null,
+              "duration": 772,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "_LoginPage.default.submitLogin(credentials.lockedOutUser, credentials.password);\n// Validation: Verify specific error text\n_LoginPage.default.elements.errorMessage().should('contain', 'Sorry, this user has been locked out');",
+              "err": {},
+              "uuid": "65992f4c-0476-4c70-9c97-24e3c6b53c8c",
+              "parentUUID": "1621b1df-53a8-4bd7-9fdd-68fe264b255a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "5f9c9a39-f057-4da3-9e69-26c01774e86f",
+            "65992f4c-0476-4c70-9c97-24e3c6b53c8c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1716,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.3.2"
+    }
+  }
+}
