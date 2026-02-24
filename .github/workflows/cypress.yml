@@ -25,3 +25,12 @@ jobs:
         with:
           name: mochawesome-report
           path: cypress/reports/html
+
+      - name: Generate HTML Report 📊
+        run: npm run generate:report
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: cypress/reports 
+          branch: gh-pages 

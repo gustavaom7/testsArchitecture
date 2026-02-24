@@ -9,9 +9,10 @@
     "test:headed": "cypress run --browser chrome --headed",
     "test:headless": "cypress run --browser chrome",
     "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline",
-    "report": "node cypress/plugins/index.js",
-    "postcypress:run": "node cypress/report/report.js",
-    "clean:reports": "rm -rf cypress/reports"
+    "prereport": "mkdir -p cypress/reports",
+    "merge:reports": "mochawesome-merge cypress/reports/*.json > cypress/reports/full-report.json",
+    "create:html": "marge cypress/reports/full-report.json --reportDir cypress/reports --inline",
+    "generate:report": "npm run merge:reports && npm run create:html"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/steps",
