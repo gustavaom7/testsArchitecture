@@ -20,7 +20,7 @@ describe('Shopping Cart Tests', () => {
         cy.visit('/inventory.html', { failOnStatusCode: false })
     })
 
-    it('add Sauce Labs Backpack to the cart', {tags:'@smoke'}, () => {
+    it('add Sauce Labs Backpack to the cart', () => {
         // Add backpack to cart
         addToCart.addBackpackToCart()
         // Open cart

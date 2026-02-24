@@ -4,9 +4,10 @@
   "description": "first test architeture version",
   "main": "index.js",
   "scripts": {
-    "test:tag": "cypress-tags run -e TAGS=@testRun --browser chrome --headed --no-exit",
-    "test:chrome": "cypress run --browser chrome",
-    "test": "cypress run --browser chrome --headed",
+    "test:api": "npx cypress run --spec 'cypress/e2e/api/**/*'",
+    "test:gui": "npx cypress run --spec 'cypress/e2e/gui/**/*'",
+    "test:headed": "cypress run --browser chrome --headed",
+    "test:headless": "cypress run --browser chrome",
     "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline",
     "report": "node cypress/plugins/index.js",
     "postcypress:run": "node cypress/report/report.js",

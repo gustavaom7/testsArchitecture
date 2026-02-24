@@ -23,7 +23,6 @@ Professional hybrid automation suite (GUI & API) developed with **Cypress** and 
 ### ⚙️ DevOps & CI/CD
 * **GitHub Actions:** Automated regression suite triggered on every push.
 * **Automated Reporting:** Rich HTML technical evidence generated via **Mochawesome**.
-* **Test Tagging:** Selective execution using `@api`, `@gui`, or `@smoke` tags for faster feedback loops.
 
 ---
 
@@ -52,7 +51,9 @@ testsArchitecture/
 
 **Interactive Mode:** `npx cypress open`
 
-**Headless Mode (Chrome):** `npm run test:chrome`
+**Headless Mode (Chrome):** `npm run test:headed`
+
+**Headed Mode (Chrome):** `npm run test:headless`
 
 **Only API Tests:** `npm run test:api`
 
