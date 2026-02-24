@@ -7,7 +7,7 @@ describe('SauceDemo Login Tests', () => {
 
     // Load data once before tests run
     before(() => {
-        cy.fixture('loginData').then((data) => {
+        cy.fixture('gui_data').then((data) => {
             credentials = data
         })
     })

@@ -1,0 +1,20 @@
+{
+  "auth": {
+    "token": "bearer_token_exemple"
+  },
+  "userSchema": {
+    "id": "number",
+    "name": "string",
+    "username": "string",
+    "email": "string"
+  },
+  "loginMock": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "newPost": {
+    "title": "Automated Test by Gustavo",
+    "body": "Demonstrating API skills with Cypress",
+    "userId": 1
+  }
+}

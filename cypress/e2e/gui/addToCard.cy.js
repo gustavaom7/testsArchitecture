@@ -8,7 +8,7 @@ describe('Shopping Cart Tests', () => {
 
     before(() => {
         // Load credentials data
-        cy.fixture('loginData').then((data) => {
+        cy.fixture('gui_data').then((data) => {
             credentials = data
         })
     })
