@@ -1,33 +1,17 @@
 {
-  "name": "test-architeture",
-  "version": "0.0.1",
-  "description": "first test architeture version",
+  "name": "test-architecture",
+  "version": "1.0.0",
+  "description": "Professional Hybrid Automation Framework (API & GUI)",
   "main": "index.js",
   "scripts": {
-    "test:api": "npx cypress run --spec 'cypress/e2e/api/**/*'",
-    "test:gui": "npx cypress run --spec 'cypress/e2e/gui/**/*'",
-    "test:headed": "cypress run --browser chrome --headed",
-    "test:headless": "cypress run --browser chrome",
-    "posttest": "npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged-report.json && npx marge cypress/reports/merged-report.json --reportDir cypress/reports/html --inline",
-    "prereport": "mkdir -p cypress/reports",
+    "test:api": "cypress run --spec 'cypress/e2e/api/**/*'",
+    "test:gui": "cypress run --spec 'cypress/e2e/gui/**/*'",
+    "test:chrome": "cypress run --browser chrome",
+    "test:all": "cypress run --browser chrome",
+    "prereport": "rm -rf cypress/reports && mkdir -p cypress/reports",
     "merge:reports": "mochawesome-merge cypress/reports/*.json > cypress/reports/full-report.json",
     "create:html": "marge cypress/reports/full-report.json --reportDir cypress/reports --inline",
     "generate:report": "npm run merge:reports && npm run create:html"
-  },
-  "cypress-cucumber-preprocessor": {
-    "step_definitions": "cypress/support/steps",
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "cypress/test-results/cucumber-json",
-      "filePrefix": "",
-      "fileSuffix": ".cucumber"
-    }
-  },
-  "dependencies": {
-    "cucumber-html-reporter": "^5.5.0",
-    "cypress-cucumber-preprocessor": "^4.3.1",
-    "cypress-tags": "^0.3.0",
-    "multiple-cucumber-html-reporter": "^1.18.3"
   },
   "devDependencies": {
     "cypress": "^15.9.0",
@@ -36,5 +20,8 @@
     "mochawesome": "^7.1.4",
     "mochawesome-merge": "^5.1.0",
     "mochawesome-report-generator": "^6.3.2"
+  },
+  "dependencies": {
+    "cypress-tags": "^0.3.0"
   }
 }

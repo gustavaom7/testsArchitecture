@@ -68,6 +68,8 @@ The automation runs on **Ubuntu-latest** via **GitHub Actions**:
 
 **Artifacts**: Uploads the Mochawesome HTML Report for review even if tests fail.
 
+[**📊 View Latest Automation Report**](https://gustavaom7.github.io/testsArchitecture/full-report.html)
+
 ## 👤 Author
 
 **Gustavo** - QA Engineer
