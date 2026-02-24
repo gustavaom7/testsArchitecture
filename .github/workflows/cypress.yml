@@ -17,7 +17,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           install-command: npm ci
-          command: npm run test:chrome && npm run posttest
+          command: npm run test:headless && npm run posttest
 
       - name: Upload Reports 📊
         if: always()
