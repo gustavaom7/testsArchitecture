@@ -18,8 +18,6 @@ Professional test automation suite developed with **Cypress** and **JavaScript**
 
 ## 🏗️ Project Structure
 
-The project is organized within the `ui/` directory for better maintainability:
-
 * **`cypress/e2e/`**: Contains the test specifications (e.g., `login.spec.js`).
 * **`cypress/support/pageobjects/`**: Houses the Page Object classes.
 * **`cypress/fixtures/`**: Stores static data files like `loginData.json`.
@@ -30,7 +28,7 @@ The project is organized within the `ui/` directory for better maintainability:
 ## 🚦 How to Run
 
 ### 1. Installation
-Navigate to the `ui/` folder and install dependencies:
+Navigate to the `testArchiteture/` folder and install dependencies:
 ``bash
 cd ui && npm install
 

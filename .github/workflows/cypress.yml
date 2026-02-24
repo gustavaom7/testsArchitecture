@@ -16,6 +16,7 @@ jobs:
       - name: Cypress run 🌲
         uses: cypress-io/github-action@v6
         with:
+          install-command: npm ci # faster and safer than 'install'
           command: npm run test:chrome && npm run posttest
 
       - name: Upload Reports 📊

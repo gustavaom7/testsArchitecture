@@ -33,3 +33,21 @@ Cypress.Commands.add('checkVisible', (selector) => {
 Cypress.Commands.add('checkNotVisible', (selector) => {
     cy.get(selector).should('not.be.visible');
 });
+
+//Login in via request for Saucedemo
+Cypress.Commands.add('login', (username, password) => {
+  cy.session([username, password], () => {
+    cy.visit('/')
+    cy.get('[data-test="username"]').type(username)
+    cy.get('[data-test="password"]').type(password)
+    cy.get('[data-test="login-button"]').click()
+    cy.url().should('contain', '/inventory.html')
+  }, 
+  {
+    validate() {
+      // Check if session's cookie or Home element exist
+      cy.get('.shopping_cart_link').should('be.visible')
+    },
+    cacheAcrossSpecs: true // share session across different test files
+  })
+})

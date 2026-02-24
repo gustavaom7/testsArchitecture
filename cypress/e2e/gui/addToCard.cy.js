@@ -1,26 +1,26 @@
-import LoginPage from '../support/pageobjects/LoginPage'
-import addToCart from '../support/pageobjects/homePage'
-import cartPage from '../support/pageobjects/CartPage'
+import LoginPage from '../../support/pageobjects/LoginPage'
+import addToCart from '../../support/pageobjects/homePage'
+import cartPage from '../../support/pageobjects/CartPage'
 
 describe('Shopping Cart Tests', () => {
 
     let credentials;
 
     before(() => {
-        // Load data
+        // Load credentials data
         cy.fixture('loginData').then((data) => {
             credentials = data
         })
     })
 
     beforeEach(() => {
-        // visit website
-        LoginPage.visit()
-        // login
-        LoginPage.submitLogin(credentials.standardUser, credentials.password)
+        // Call cy.login function from '../support/commands.js'
+        cy.login(credentials.standardUser, credentials.password)
+        // Visit website
+        cy.visit('/inventory.html', { failOnStatusCode: false })
     })
 
-    it('add Sauce Labs Backpack to the cart', () => {
+    it('add Sauce Labs Backpack to the cart', {tags:'@smoke'}, () => {
         // Add backpack to cart
         addToCart.addBackpackToCart()
         // Open cart
