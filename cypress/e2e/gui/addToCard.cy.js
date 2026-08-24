@@ -76,4 +76,47 @@ describe('Shopping Cart Tests', () => {
         cy.checkVisible('[data-test="complete-header"]')
 
     })
+
+    it('return to the inventory page when clicking continue shopping', () => {
+        // Add backpack to cart
+        addToCart.addBackpackToCart()
+        // Open cart
+        cartPage.openCart()
+        // Click continue shopping
+        cartPage.clickContinueShopping()
+        // Should be back on the inventory page, with the item still in the cart
+        cy.url().should('include', '/inventory.html')
+        addToCart.checkCartBadgeCount(1)
+    })
+
+    it('cancel the checkout and return to the cart page', () => {
+        // Add backpack to cart
+        addToCart.addBackpackToCart()
+        // Open cart
+        cartPage.openCart()
+        // Click checkout button
+        cartPage.checkoutButtonClick()
+        // Cancel the checkout
+        cartPage.clickCancel()
+        // Should be back on the cart page, item still present
+        cy.url().should('include', '/cart.html')
+        cartPage.checkItemInCart('Sauce Labs Backpack')
+    })
+
+    it('checkout summary total should equal subtotal plus tax', () => {
+        // Add backpack to cart
+        addToCart.addBackpackToCart()
+        // Open cart
+        cartPage.openCart()
+        // Click checkout button
+        cartPage.checkoutButtonClick()
+        // Fill form correctly
+        cartPage.fillCheckoutFormCorrectly()
+        // Move to the checkout overview
+        cartPage.continueButtonCheckout()
+        // Business rule: total must equal subtotal + tax
+        cartPage.getSummaryTotals().then(({ subtotal, tax, total }) => {
+            expect(total).to.be.closeTo(subtotal + tax, 0.01)
+        })
+    })
 })

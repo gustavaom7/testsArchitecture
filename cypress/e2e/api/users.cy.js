@@ -112,9 +112,76 @@ describe('API Testing - User Management', () => {
     }).then((response) => {
       // Check if token was accepted
       expect(response.status).to.eq(200)
-      
+
     // Checking if header response confirms content type
       expect(response.headers['content-type']).to.include('application/json')
+    })
+  })
+
+  // Full update (idempotent) validation
+  it('PUT - should fully update an existing post', function () {
+    const payload = this.apiData.newPost
+
+    cy.request({
+      method: 'PUT',
+      url: `${baseUrl}/posts/1`,
+      body: payload
+    }).then((response) => {
+      expect(response.status).to.eq(200)
+      expect(response.body.title).to.eq(payload.title)
+      expect(response.body.id).to.eq(1)
+    })
+  })
+
+  // Partial update validation
+  it('PATCH - should partially update an existing post', function () {
+    cy.request({
+      method: 'PATCH',
+      url: `${baseUrl}/posts/1`,
+      body: { title: 'Updated title only' }
+    }).then((response) => {
+      expect(response.status).to.eq(200)
+      expect(response.body.title).to.eq('Updated title only')
+      // Other original fields should remain untouched by a PATCH
+      expect(response.body).to.have.property('userId')
+    })
+  })
+
+  // Deletion validation
+  it('DELETE - should remove a post', function () {
+    cy.request({
+      method: 'DELETE',
+      url: `${baseUrl}/posts/1`
+    }).then((response) => {
+      expect(response.status).to.eq(200)
+    })
+  })
+
+  // Query param filtering / business rule validation
+  it('GET - should filter posts by userId query param', () => {
+    cy.request({
+      method: 'GET',
+      url: `${baseUrl}/posts`,
+      qs: { userId: 1 }
+    }).then((response) => {
+      expect(response.status).to.eq(200)
+      expect(response.body).to.be.an('array').and.not.be.empty
+
+      // Every returned post must belong to the requested user
+      response.body.forEach((post) => {
+        expect(post.userId).to.eq(1)
+      })
+    })
+  })
+
+  // Resilience check: malformed/invalid resource id should not crash the client
+  it('DELETE - should handle deletion of a non-existent post gracefully', () => {
+    cy.request({
+      method: 'DELETE',
+      url: `${baseUrl}/posts/99999`,
+      failOnStatusCode: false
+    }).then((response) => {
+      expect(response.status).to.be.oneOf([200, 404])
     })
   })
 })

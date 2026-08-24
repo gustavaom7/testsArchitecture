@@ -10,7 +10,11 @@ class cartPage {
         lastNameField: () => cy.get('[data-test="lastName"]'),
         postalCodeField: () => cy.get('[data-test="postalCode"]'),
         continueButtonCheckout: () => cy.get('[data-test="continue"]'),
-        finishCheckout: () => cy.get('[data-test="finish"]')
+        finishCheckout: () => cy.get('[data-test="finish"]'),
+        cancelButton: () => cy.get('[data-test="cancel"]'),
+        subtotalLabel: () => cy.get('[data-test="subtotal-label"]'),
+        taxLabel: () => cy.get('[data-test="tax-label"]'),
+        totalLabel: () => cy.get('[data-test="total-label"]')
     }
 
     // Actions
@@ -65,6 +69,24 @@ class cartPage {
 
     clickFinishCheckout() {
         this.elements.finishCheckout().click()
+    }
+
+    clickCancel() {
+        this.elements.cancelButton().click()
+    }
+
+    // Extracts a numeric value from labels like "Item total: $29.99"
+    getSummaryTotals() {
+        return this.elements.subtotalLabel().invoke('text').then(subtotalText => {
+            const subtotal = parseFloat(subtotalText.replace(/[^0-9.]/g, ''))
+            return this.elements.taxLabel().invoke('text').then(taxText => {
+                const tax = parseFloat(taxText.replace(/[^0-9.]/g, ''))
+                return this.elements.totalLabel().invoke('text').then(totalText => {
+                    const total = parseFloat(totalText.replace(/[^0-9.]/g, ''))
+                    return { subtotal, tax, total }
+                })
+            })
+        })
     }
 
 }
